@@ -11,4 +11,4 @@ RUN pipx run poetry install --no-root
 
 COPY todo todo
 
-CMD ["bash", "-c", "sleep 10 && pipx run poetry run flask --app todo run --host 0.0.0.0 --port 6400"]
+CMD ["sh", "-c", "if [ -n \"$SQLALCHEMY_DATABASE_URI\" ]; then sleep 10; fi; pipx run poetry run flask --app todo run --host 0.0.0.0 --port 6400"]
